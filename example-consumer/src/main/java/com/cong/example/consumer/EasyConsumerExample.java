@@ -20,7 +20,7 @@ public class EasyConsumerExample {
         // 动态代理
         UserService userService = serviceProxyFactory.getProxy(UserService.class);
         User user = new User();
-        user.setName("我是聪！！！！");
+        user.setName("我是聪欸");
         // 调用
         for (int i = 0; i < 10; i++) {
             User newUser = userService.getUser(user);
