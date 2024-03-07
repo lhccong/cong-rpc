@@ -2,6 +2,7 @@ package com.cong.example.provider;
 
 
 import com.cong.example.service.UserService;
+import com.cong.rpc.core.RpcApplication;
 import com.cong.rpc.core.registry.LocalRegistry;
 import com.cong.rpc.core.server.HttpServer;
 import com.cong.rpc.core.server.VertxHttpServer;
@@ -20,6 +21,6 @@ public class EasyProviderExample {
 
         // 启动 web 服务
         HttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(8080);
+        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
 }

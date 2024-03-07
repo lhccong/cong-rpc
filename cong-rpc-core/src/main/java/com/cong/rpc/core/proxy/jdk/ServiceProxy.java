@@ -2,6 +2,7 @@ package com.cong.rpc.core.proxy.jdk;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import com.cong.rpc.core.RpcApplication;
 import com.cong.rpc.core.model.RpcRequest;
 import com.cong.rpc.core.model.RpcResponse;
 import com.cong.rpc.core.serializer.Serializer;
@@ -47,7 +48,7 @@ public class ServiceProxy implements InvocationHandler {
             byte[] bodyBytes = serializer.serialize(rpcRequest);
             // 发送请求
             // todo 注意，这里地址被硬编码了（需要使用注册中心和服务发现机制解决）
-            try (HttpResponse httpResponse = HttpRequest.post("http://localhost:8080")
+            try (HttpResponse httpResponse = HttpRequest.post("http://"+ RpcApplication.getRpcConfig().getServerHost()+":"+ RpcApplication.getRpcConfig().getServerPort())
                     .body(bodyBytes)
                     .execute()) {
                 byte[] result = httpResponse.bodyBytes();
