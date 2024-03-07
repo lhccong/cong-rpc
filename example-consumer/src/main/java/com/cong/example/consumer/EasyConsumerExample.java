@@ -27,6 +27,7 @@ public class EasyConsumerExample {
             if (newUser != null) {
                 System.out.println("我是name啊"+newUser.getName());
             } else {
+                //名字为空则调用到了mock方法
                 System.out.println("user == null");
             }
         }
