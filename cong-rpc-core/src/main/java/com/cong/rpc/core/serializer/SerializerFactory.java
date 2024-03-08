@@ -1,6 +1,5 @@
 package com.cong.rpc.core.serializer;
 
-import com.cong.rpc.core.serializer.jdk.JdkSerializer;
 import com.cong.rpc.core.spi.SpiLoader;
 
 /**
@@ -10,13 +9,9 @@ import com.cong.rpc.core.spi.SpiLoader;
  * @date 2024/03/08
  */
 public class SerializerFactory {
-    /**
-     * 默认序列化器
-     */
-    private static  Serializer DEFAULT_SERIALIZER ;
-
-
-
+    static {
+        SpiLoader.load(Serializer.class);
+    }
 
     /**
      * 获取实例
@@ -25,15 +20,6 @@ public class SerializerFactory {
      * @return {@link Serializer}
      */
     public static Serializer getInstance(String key) {
-        if (DEFAULT_SERIALIZER == null) {
-            synchronized (SerializerFactory.class) {
-                if (DEFAULT_SERIALIZER == null) {
-                    SpiLoader.load(Serializer.class);
-                    DEFAULT_SERIALIZER = new JdkSerializer();
-                }
-            }
-        }
         return SpiLoader.getInstance(Serializer.class, key);
     }
-
 }
