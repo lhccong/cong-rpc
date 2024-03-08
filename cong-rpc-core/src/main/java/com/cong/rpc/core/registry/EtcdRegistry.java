@@ -2,15 +2,11 @@ package com.cong.rpc.core.registry;
 
 import com.cong.rpc.core.config.RegistryConfig;
 import com.cong.rpc.core.model.ServiceMetaInfo;
-import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.KV;
-import io.etcd.jetcd.kv.GetResponse;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 /**
  * etcd 注册表
