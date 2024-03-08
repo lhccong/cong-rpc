@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * SPI 加载器（支持键值对映射）
+ *
  * @author liuhuaicong
  */
 @Slf4j
@@ -78,12 +79,17 @@ public class SpiLoader {
         // 从实例缓存中加载指定类型的实例
         String implClassName = implClass.getName();
         if (!instanceCache.containsKey(implClassName)) {
-            try {
-                instanceCache.put(implClassName, implClass.newInstance());
-            } catch (InstantiationException | IllegalAccessException e) {
-                String errorMsg = String.format("%s 类实例化失败", implClassName);
-                throw new RuntimeException(errorMsg, e);
+            synchronized (SpiLoader.class) {
+                if (!instanceCache.containsKey(implClassName)) {
+                    try {
+                        instanceCache.put(implClassName, implClass.newInstance());
+                    } catch (InstantiationException | IllegalAccessException e) {
+                        String errorMsg = String.format("%s 类实例化失败", implClassName);
+                        throw new RuntimeException(errorMsg, e);
+                    }
+                }
             }
+
         }
         return (T) instanceCache.get(implClassName);
     }
