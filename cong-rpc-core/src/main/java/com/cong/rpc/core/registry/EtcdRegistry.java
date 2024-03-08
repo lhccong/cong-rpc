@@ -1,34 +1,57 @@
 package com.cong.rpc.core.registry;
 
+import com.cong.rpc.core.config.RegistryConfig;
+import com.cong.rpc.core.model.ServiceMetaInfo;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.KV;
 import io.etcd.jetcd.kv.GetResponse;
 
+import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-public class EtcdRegistry {
+/**
+ * etcd 注册表
+ *
+ * @author cong
+ * @date 2024/03/08
+ */
+public class EtcdRegistry implements Registry  {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        // create client using endpoints
-        Client client = Client.builder().endpoints("http://localhost:2379")
-                .build();
+    private Client client;
 
-        KV kvClient = client.getKVClient();
-        ByteSequence key = ByteSequence.from("test_key".getBytes());
-        ByteSequence value = ByteSequence.from("test_value".getBytes());
+    private KV kvClient;
 
-        // put the key-value
-        kvClient.put(key, value).get();
+    /**
+     * 根节点
+     */
+    private static final String ETCD_ROOT_PATH = "/rpc/";
 
-        // get the CompletableFuture
-        CompletableFuture<GetResponse> getFuture = kvClient.get(key);
+    @Override
+    public void init(RegistryConfig registryConfig) {
+        client = Client.builder().endpoints(registryConfig.getAddress()).connectTimeout(Duration.ofMillis(registryConfig.getTimeout())).build();
+        kvClient = client.getKVClient();
+    }
 
-        // get the value from CompletableFuture
-        GetResponse response = getFuture.get();
+    @Override
+    public void register(ServiceMetaInfo serviceMetaInfo) throws Exception {
 
-        // delete the key
-        kvClient.delete(key).get();
+    }
+
+    @Override
+    public void unRegister(ServiceMetaInfo serviceMetaInfo) {
+
+    }
+
+    @Override
+    public List<ServiceMetaInfo> serviceDiscovery(String serviceKey) {
+        return null;
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }
