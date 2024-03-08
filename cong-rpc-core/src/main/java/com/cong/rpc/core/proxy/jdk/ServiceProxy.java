@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.ServiceLoader;
 
 /**
  * 服务代理（JDK 动态代理）
@@ -32,9 +33,13 @@ public class ServiceProxy implements InvocationHandler {
      * @throws Throwable 可投掷
      */
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) {
         // 指定序列化器
-        Serializer serializer = new KryoSerializeFactory();
+        Serializer serializer = null;
+        ServiceLoader<Serializer> serviceLoader = ServiceLoader.load(Serializer.class);
+        for (Serializer service : serviceLoader) {
+            serializer = service;
+        }
 
         // 构造请求
         RpcRequest rpcRequest = RpcRequest.builder()
@@ -45,6 +50,7 @@ public class ServiceProxy implements InvocationHandler {
                 .build();
         try {
             // 序列化
+            assert serializer != null;
             byte[] bodyBytes = serializer.serialize(rpcRequest);
             // 发送请求
             // todo 注意，这里地址被硬编码了（需要使用注册中心和服务发现机制解决）
