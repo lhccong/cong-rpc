@@ -1,0 +1,4 @@
+jdk=com.cong.rpc.core.serializer.jdk.JdkSerializer
+hessian=com.cong.rpc.core.serializer.hessian.HessianSerializer
+fastjson=com.cong.rpc.core.serializer.fastjson.FastJsonSerializer
+kryo=com.cong.rpc.core.serializer.kryo.KryoSerializer
