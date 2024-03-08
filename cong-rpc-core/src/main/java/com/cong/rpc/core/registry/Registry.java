@@ -18,7 +18,7 @@ public interface Registry {
     /**
      * 初始化
      *
-     * @param registryConfig
+     * @param registryConfig 注册表配置
      */
     void init(RegistryConfig registryConfig);
 
@@ -31,17 +31,19 @@ public interface Registry {
     void register(ServiceMetaInfo serviceMetaInfo) throws Exception;
 
     /**
+     * 联合国注册
      * 注销服务（服务端）
      *
-     * @param serviceMetaInfo
+     * @param serviceMetaInfo 服务元信息
      */
     void unRegister(ServiceMetaInfo serviceMetaInfo);
 
     /**
+     * 服务发现
      * 服务发现（获取某服务的所有节点，消费端）
      *
      * @param serviceKey 服务键名
-     * @return
+     * @return {@link List}<{@link ServiceMetaInfo}>
      */
     List<ServiceMetaInfo> serviceDiscovery(String serviceKey);
 
