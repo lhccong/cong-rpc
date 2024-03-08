@@ -6,12 +6,12 @@ import com.cong.rpc.core.RpcApplication;
 import com.cong.rpc.core.model.RpcRequest;
 import com.cong.rpc.core.model.RpcResponse;
 import com.cong.rpc.core.serializer.Serializer;
+import com.cong.rpc.core.serializer.SerializerFactory;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.ServiceLoader;
 
 /**
  * 服务代理（JDK 动态代理）
@@ -34,11 +34,7 @@ public class ServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
         // 指定序列化器
-        Serializer serializer = null;
-        ServiceLoader<Serializer> serviceLoader = ServiceLoader.load(Serializer.class);
-        for (Serializer service : serviceLoader) {
-            serializer = service;
-        }
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 构造请求
         RpcRequest rpcRequest = RpcRequest.builder()
