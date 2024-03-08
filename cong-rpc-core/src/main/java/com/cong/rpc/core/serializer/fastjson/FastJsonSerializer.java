@@ -10,7 +10,7 @@ import com.cong.rpc.core.serializer.Serializer;
  * @author cong
  * @date 2024/03/07
  */
-public class FastJsonSerializeFactory implements Serializer {
+public class FastJsonSerializer implements Serializer {
 
     @Override
     public <T> byte[] serialize(T t) {

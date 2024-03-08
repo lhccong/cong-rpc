@@ -14,7 +14,7 @@ import java.io.ByteArrayOutputStream;
  * @author cong
  * @date 2024/03/07
  */
-public class HessianSerializeFactory implements Serializer {
+public class HessianSerializer implements Serializer {
 
     @Override
     public <T> byte[] serialize(T t) {

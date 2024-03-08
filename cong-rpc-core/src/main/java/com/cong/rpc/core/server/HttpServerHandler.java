@@ -4,7 +4,7 @@ import com.cong.rpc.core.model.RpcRequest;
 import com.cong.rpc.core.model.RpcResponse;
 import com.cong.rpc.core.registry.LocalRegistry;
 import com.cong.rpc.core.serializer.Serializer;
-import com.cong.rpc.core.serializer.kryo.KryoSerializeFactory;
+import com.cong.rpc.core.serializer.kryo.KryoSerializer;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -26,7 +26,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
         // 指定序列化器
-        final Serializer serializer = new KryoSerializeFactory();
+        final Serializer serializer = new KryoSerializer();
 
         // 记录日志
         log.info("Received request: " + request.method() + " " + request.uri());

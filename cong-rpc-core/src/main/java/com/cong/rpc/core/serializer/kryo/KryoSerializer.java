@@ -16,7 +16,7 @@ import java.io.ByteArrayOutputStream;
  * @author cong
  * @date 2024/03/07
  */
-public class KryoSerializeFactory implements Serializer {
+public class KryoSerializer implements Serializer {
 
     private static final ThreadLocal<Kryo> KRYOS = ThreadLocal.withInitial(Kryo::new);
 
