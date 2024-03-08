@@ -22,7 +22,7 @@ public class JdkSerializer implements Serializer {
      */
     @Override
     public <T> byte[] serialize(T object) throws IOException {
-        System.out.println("自定义序列化");
+        System.out.println("我自定义序列化");
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
         objectOutputStream.writeObject(object);
