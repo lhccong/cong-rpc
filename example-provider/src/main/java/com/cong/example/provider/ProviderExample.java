@@ -22,7 +22,7 @@ import com.cong.rpc.core.server.VertxHttpServer;
 public class ProviderExample {
 
     public static void main(String[] args) {
-        // RPC 框架初始化
+        // RPC的框架初始化
         RpcApplication.init();
 
         // 注册服务
