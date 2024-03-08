@@ -1,7 +1,10 @@
 package com.cong.rpc.core;
 
+import com.cong.rpc.core.config.RegistryConfig;
 import com.cong.rpc.core.config.RpcConfig;
 import com.cong.rpc.core.constant.RpcConstant;
+import com.cong.rpc.core.registry.Registry;
+import com.cong.rpc.core.registry.RegistryFactory;
 import com.cong.rpc.core.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,14 +21,18 @@ public class RpcApplication {
     private static volatile RpcConfig rpcConfig;
 
     /**
-     * 初始化
      * 框架初始化，支持传入自定义配置
      *
-     * @param newRpcConfig 新 RPC 配置
+     * @param newRpcConfig
      */
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("rpc init, config = {}", newRpcConfig.toString());
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
     }
 
     /**

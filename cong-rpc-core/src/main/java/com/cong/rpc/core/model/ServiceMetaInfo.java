@@ -1,12 +1,16 @@
 package com.cong.rpc.core.model;
 
 
+import cn.hutool.core.util.StrUtil;
+import lombok.Data;
+
 /**
  * 服务元信息（注册信息）
  *
  * @author cong
  * @date 2024/03/08
  */
+@Data
 public class ServiceMetaInfo {
 
 
@@ -29,6 +33,10 @@ public class ServiceMetaInfo {
      * 服务分组（暂未实现）
      */
     private String serviceGroup = "default";
+    private String serviceHost;
+    private int servicePort;
+
+
 
     /**
      * 获取服务键名
@@ -50,5 +58,15 @@ public class ServiceMetaInfo {
     public String getServiceNodeKey() {
         return String.format("%s/%s", getServiceKey(), serviceAddress);
     }
-
+    /**
+     * 获取完整服务地址
+     *
+     * @return
+     */
+    public String getServiceAddress() {
+        if (!StrUtil.contains(serviceHost, "http")) {
+            return String.format("http://%s:%s", serviceHost, servicePort);
+        }
+        return String.format("%s:%s", serviceHost, servicePort);
+    }
 }

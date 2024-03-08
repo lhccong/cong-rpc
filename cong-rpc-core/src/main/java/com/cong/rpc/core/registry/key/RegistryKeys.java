@@ -1,4 +1,4 @@
-package com.cong.rpc.core.registry;
+package com.cong.rpc.core.registry.key;
 
 /**
  * 注册表项
