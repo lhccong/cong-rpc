@@ -14,9 +14,7 @@ public class SerializerFactory {
      * 默认序列化器
      */
     private static  Serializer DEFAULT_SERIALIZER ;
-    static {
-        SpiLoader.load(Serializer.class);
-    }
+
 
 
 
