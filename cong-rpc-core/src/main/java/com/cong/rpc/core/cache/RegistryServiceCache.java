@@ -34,7 +34,7 @@ public class RegistryServiceCache {
      *
      * @return
      */
-    List<ServiceMetaInfo> readCache() {
+    public List<ServiceMetaInfo> readCache() {
         return this.serviceCache;
     }
 
