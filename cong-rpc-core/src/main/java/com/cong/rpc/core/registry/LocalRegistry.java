@@ -17,7 +17,6 @@ public class LocalRegistry {
     private static final Map<String, Class<?>> MAP = new ConcurrentHashMap<>();
 
     /**
-     * 注册
      * 注册服务
      *
      * @param serviceName 服务名称
