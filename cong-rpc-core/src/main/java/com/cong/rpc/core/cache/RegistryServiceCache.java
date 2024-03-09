@@ -25,7 +25,7 @@ public class RegistryServiceCache {
      * @param newServiceCache
      * @return
      */
-    void writeCache(List<ServiceMetaInfo> newServiceCache) {
+    public void writeCache(List<ServiceMetaInfo> newServiceCache) {
         this.serviceCache = newServiceCache;
     }
 
@@ -41,7 +41,7 @@ public class RegistryServiceCache {
     /**
      * 清空缓存
      */
-    void clearCache() {
+    public void clearCache() {
         this.serviceCache = null;
     }
 }
