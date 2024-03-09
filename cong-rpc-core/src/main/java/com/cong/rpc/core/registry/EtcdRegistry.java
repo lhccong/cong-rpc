@@ -91,7 +91,7 @@ public class EtcdRegistry implements Registry {
     public List<ServiceMetaInfo> serviceDiscovery(String serviceKey) {
         // 优先从缓存获取服务
         List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
-        if (cachedServiceMetaInfoList != null) {
+        if (!CollUtil.isEmpty(cachedServiceMetaInfoList)) {
             return cachedServiceMetaInfoList;
         }
         //前缀搜索，结尾一定要加 '/'
