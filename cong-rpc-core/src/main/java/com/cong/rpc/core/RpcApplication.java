@@ -21,9 +21,10 @@ public class RpcApplication {
     private static volatile RpcConfig rpcConfig;
 
     /**
+     * 初始化
      * 框架初始化，支持传入自定义配置
      *
-     * @param newRpcConfig
+     * @param newRpcConfig 新 RPC 配置
      */
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
@@ -33,6 +34,9 @@ public class RpcApplication {
         Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
         registry.init(registryConfig);
         log.info("registry init, config = {}", registryConfig);
+
+        // 创建并注册 Shutdown Hook，JVM 退出时执行操作
+        Runtime.getRuntime().addShutdownHook(new Thread(registry::destroy));
     }
 
     /**
