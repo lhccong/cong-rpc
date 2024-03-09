@@ -1,6 +1,7 @@
 package com.cong.rpc.core.registry;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.ConcurrentHashSet;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import cn.hutool.json.JSONUtil;
@@ -39,6 +40,11 @@ public class EtcdRegistry implements Registry {
      * 注册中心服务缓存
      */
     private final RegistryServiceCache registryServiceCache = new RegistryServiceCache();
+
+    /**
+     * 正在监听的 key 集合
+     */
+    private final Set<String> watchingKeySet = new ConcurrentHashSet<>();
 
     /**
      * 根节点
@@ -159,5 +165,10 @@ public class EtcdRegistry implements Registry {
         // 支持秒级别定时任务
         CronUtil.setMatchSecond(true);
         CronUtil.start();
+    }
+
+    @Override
+    public void watch(String serviceNodeKey) {
+
     }
 }
