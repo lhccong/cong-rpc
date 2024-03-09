@@ -23,7 +23,6 @@ public class RpcApplication {
     /**
      * 初始化
      * 框架初始化，支持传入自定义配置
-     *
      * @param newRpcConfig 新 RPC 配置
      */
     public static void init(RpcConfig newRpcConfig) {

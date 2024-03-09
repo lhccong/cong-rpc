@@ -24,10 +24,6 @@ public class ServiceMetaInfo {
      */
     private String serviceVersion = "1.0";
 
-    /**
-     * 服务地址
-     */
-    private String serviceAddress;
 
     /**
      * 服务分组（暂未实现）
@@ -56,7 +52,7 @@ public class ServiceMetaInfo {
      * @return {@link String}
      */
     public String getServiceNodeKey() {
-        return String.format("%s/%s", getServiceKey(), serviceAddress);
+        return String.format("%s/%s:%s", getServiceKey(), serviceHost, servicePort);
     }
     /**
      * 获取完整服务地址
