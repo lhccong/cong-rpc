@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import cn.hutool.json.JSONUtil;
+import com.cong.rpc.core.cache.RegistryServiceCache;
 import com.cong.rpc.core.config.RegistryConfig;
 import com.cong.rpc.core.model.ServiceMetaInfo;
 import io.etcd.jetcd.*;
@@ -33,6 +34,11 @@ public class EtcdRegistry implements Registry {
      * 本机注册的节点 key 集合（用于维护续期）
      */
     private final Set<String> localRegisterNodeKeySet = new HashSet<>();
+
+    /**
+     * 注册中心服务缓存
+     */
+    private final RegistryServiceCache registryServiceCache = new RegistryServiceCache();
 
     /**
      * 根节点
