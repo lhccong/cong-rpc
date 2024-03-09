@@ -2,7 +2,7 @@ package com.cong.rpc.core.registry.test;
 
 import com.cong.rpc.core.config.RegistryConfig;
 import com.cong.rpc.core.model.ServiceMetaInfo;
-import com.cong.rpc.core.registry.EtcdRegistry;
+import com.cong.rpc.core.registry.etcd.EtcdRegistry;
 import com.cong.rpc.core.registry.Registry;
 import org.junit.Assert;
 import org.junit.Before;

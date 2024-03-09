@@ -1,4 +1,4 @@
-package com.cong.rpc.core.registry;
+package com.cong.rpc.core.registry.etcd;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.ConcurrentHashSet;
@@ -8,6 +8,7 @@ import cn.hutool.json.JSONUtil;
 import com.cong.rpc.core.cache.RegistryServiceCache;
 import com.cong.rpc.core.config.RegistryConfig;
 import com.cong.rpc.core.model.ServiceMetaInfo;
+import com.cong.rpc.core.registry.Registry;
 import io.etcd.jetcd.*;
 import io.etcd.jetcd.options.GetOption;
 import io.etcd.jetcd.options.PutOption;

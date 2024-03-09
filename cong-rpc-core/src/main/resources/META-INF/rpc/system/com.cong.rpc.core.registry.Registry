@@ -1,1 +1,2 @@
-etcd=com.cong.rpc.core.registry.EtcdRegistry
+etcd=com.cong.rpc.core.registry.etcd.EtcdRegistry
+zookeeper=com.cong.rpc.core.registry.zookeeper.ZooKeeperRegistry
