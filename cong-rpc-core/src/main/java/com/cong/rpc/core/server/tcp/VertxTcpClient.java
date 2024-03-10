@@ -15,8 +15,10 @@ public class VertxTcpClient {
             if (result.succeeded()) {
                 System.out.println("Connected to TCP server");
                 io.vertx.core.net.NetSocket socket = result.result();
-                // 发送数据
-                socket.write("Hello, server!");
+                for (int i = 0; i < 1000; i++) {
+                    // 发送数据
+                    socket.write("Hello, server!Hello, server!Hello, server!Hello, server!");
+                }
                 // 接收响应
                 socket.handler(buffer -> {
                     System.out.println("Received response from server: " + buffer.toString());

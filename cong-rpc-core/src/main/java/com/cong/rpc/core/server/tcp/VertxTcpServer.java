@@ -2,9 +2,10 @@ package com.cong.rpc.core.server.tcp;
 
 import com.cong.rpc.core.server.http.HttpServer;
 import io.vertx.core.Vertx;
-import io.vertx.core.buffer.Buffer;
 import io.vertx.core.net.NetServer;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class VertxTcpServer implements HttpServer {
 
     private byte[] handleRequest(byte[] requestData) {
@@ -22,24 +23,33 @@ public class VertxTcpServer implements HttpServer {
         NetServer server = vertx.createNetServer();
 
         // 处理请求
+//        server.connectHandler(new TcpServerHandler());
         server.connectHandler(socket -> {
-            // 处理连接
             socket.handler(buffer -> {
-                // 处理接收到的字节数组
-                byte[] requestData = buffer.getBytes();
-                // 在这里进行自定义的字节数组处理逻辑，比如解析请求、调用服务、构造响应等
-                byte[] responseData = handleRequest(requestData);
-                // 发送响应
-                socket.write(Buffer.buffer(responseData));
+                String testMessage = "Hello, server!Hello, server!Hello, server!Hello, server!";
+                int messageLength = testMessage.getBytes().length;
+                if (buffer.getBytes().length < messageLength) {
+                    System.out.println("半包, length = " + buffer.getBytes().length);
+                    return;
+                }
+                if (buffer.getBytes().length > messageLength) {
+                    System.out.println("粘包, length = " + buffer.getBytes().length);
+                    return;
+                }
+                String str = new String(buffer.getBytes(0, messageLength));
+                System.out.println(str);
+                if (testMessage.equals(str)) {
+                    System.out.println("good");
+                }
             });
         });
 
         // 启动 TCP 服务器并监听指定端口
         server.listen(port, result -> {
             if (result.succeeded()) {
-                System.out.println("TCP server started on port " + port);
+                log.info("TCP server started on port " + port);
             } else {
-                System.err.println("Failed to start TCP server: " + result.cause());
+                log.info("Failed to start TCP server: " + result.cause());
             }
         });
     }
