@@ -4,7 +4,7 @@ package com.cong.example.provider;
 import com.cong.example.service.UserService;
 import com.cong.rpc.core.RpcApplication;
 import com.cong.rpc.core.registry.LocalRegistry;
-import com.cong.rpc.core.server.HttpServer;
+import com.cong.rpc.core.server.http.HttpServer;
 import com.cong.rpc.core.server.VertxHttpServer;
 
 /**
