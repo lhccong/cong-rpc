@@ -53,7 +53,7 @@ public class ServiceProxy implements InvocationHandler {
         serviceMetaInfo.setServiceVersion(RpcConstant.DEFAULT_SERVICE_VERSION);
         List<ServiceMetaInfo> serviceMetaInfoList = registry.serviceDiscovery(serviceMetaInfo.getServiceKey());
         if (CollUtil.isEmpty(serviceMetaInfoList)) {
-            throw new RuntimeException("暂无服务地址");
+            throw new RuntimeException("暂无服务提供者地址");
         }
         ServiceMetaInfo selectedServiceMetaInfo = serviceMetaInfoList.get(0);
         // 发送 TCP 请求
