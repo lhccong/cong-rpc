@@ -1,6 +1,7 @@
 package com.cong.rpc.core.server.tcp;
 
 import io.vertx.core.Vertx;
+import io.vertx.core.buffer.Buffer;
 
 /**
  * @author cong
@@ -17,7 +18,12 @@ public class VertxTcpClient {
                 io.vertx.core.net.NetSocket socket = result.result();
                 for (int i = 0; i < 1000; i++) {
                     // 发送数据
-                    socket.write("Hello, server!Hello, server!Hello, server!Hello, server!");
+                    Buffer buffer = Buffer.buffer();
+                    String str = "Hello, server!Hello, server!Hello, server!Hello, server!";
+                    buffer.appendInt(0);
+                    buffer.appendInt(str.getBytes().length);
+                    buffer.appendBytes(str.getBytes());
+                    socket.write(buffer);
                 }
                 // 接收响应
                 socket.handler(buffer -> {
