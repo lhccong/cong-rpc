@@ -9,7 +9,7 @@ import com.cong.rpc.core.model.ServiceMetaInfo;
 import com.cong.rpc.core.registry.LocalRegistry;
 import com.cong.rpc.core.registry.Registry;
 import com.cong.rpc.core.registry.RegistryFactory;
-import com.cong.rpc.core.server.HttpServer;
+import com.cong.rpc.core.server.http.HttpServer;
 import com.cong.rpc.core.server.VertxHttpServer;
 
 /**
