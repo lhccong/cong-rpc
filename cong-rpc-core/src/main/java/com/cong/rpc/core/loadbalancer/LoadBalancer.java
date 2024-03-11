@@ -1,6 +1,5 @@
 package com.cong.rpc.core.loadbalancer;
 
-
 import com.cong.rpc.core.model.ServiceMetaInfo;
 
 import java.util.List;
