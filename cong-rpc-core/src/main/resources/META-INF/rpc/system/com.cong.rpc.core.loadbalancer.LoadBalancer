@@ -1,0 +1,3 @@
+consistentHash=com.cong.rpc.core.loadbalancer.ConsistentHashLoadBalancer
+random=com.cong.rpc.core.loadbalancer.RandomLoadBalancer
+roundRobin=com.cong.rpc.core.loadbalancer.RoundRobinLoadBalancer
