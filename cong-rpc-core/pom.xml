@@ -69,6 +69,11 @@
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>zero-allocation-hashing</artifactId>
+            <version>0.12</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.etcd/jetcd-core -->
         <dependency>
             <groupId>io.etcd</groupId>
