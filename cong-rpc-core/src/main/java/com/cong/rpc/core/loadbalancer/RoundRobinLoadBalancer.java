@@ -31,4 +31,6 @@ public class RoundRobinLoadBalancer implements LoadBalancer {
         int index = currentIndex.getAndIncrement() % size;
         return serviceMetaInfoList.get(index);
     }
+
+
 }
