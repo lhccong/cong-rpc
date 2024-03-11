@@ -1,8 +1,6 @@
-package com.cong.rpc.core.proxy.jdk;
+package com.cong.rpc.core.proxy;
 
 import com.cong.rpc.core.RpcApplication;
-import com.cong.rpc.core.proxy.MockServiceProxy;
-import com.cong.rpc.core.proxy.ProxyFactory;
 
 import java.lang.reflect.Proxy;
 

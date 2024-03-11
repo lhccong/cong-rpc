@@ -10,28 +10,17 @@ import com.cong.rpc.core.spi.SpiLoader;
  * @date 2024/03/08
  */
 public class SerializerFactory {
-    /**
-     * 默认序列化器
-     */
-    private static  Serializer DEFAULT_SERIALIZER ;
-
-
+    static {
+        SpiLoader.load(Serializer.class);
+    }
 
     /**
      * 获取实例
      *
-     * @param key 钥匙
-     * @return {@link Serializer}
+     * @param key
+     * @return
      */
     public static Serializer getInstance(String key) {
-        if (DEFAULT_SERIALIZER == null) {
-            synchronized (SerializerFactory.class) {
-                if (DEFAULT_SERIALIZER == null) {
-                    SpiLoader.load(Serializer.class);
-                    DEFAULT_SERIALIZER = new JdkSerializer();
-                }
-            }
-        }
         return SpiLoader.getInstance(Serializer.class, key);
     }
 

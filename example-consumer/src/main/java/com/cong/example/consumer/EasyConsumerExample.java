@@ -3,7 +3,7 @@ package com.cong.example.consumer;
 
 import com.cong.example.model.User;
 import com.cong.example.service.UserService;
-import com.cong.rpc.core.proxy.jdk.ServiceProxyFactory;
+import com.cong.rpc.core.proxy.ServiceProxyFactory;
 import lombok.extern.slf4j.Slf4j;
 
 /**
