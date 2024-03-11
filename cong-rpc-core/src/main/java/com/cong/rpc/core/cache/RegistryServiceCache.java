@@ -21,7 +21,6 @@ public class RegistryServiceCache {
 
     /**
      * 写入缓存
-     * 写缓存
      *
      * @param newServiceCache 新建服务缓存
      */
@@ -31,7 +30,6 @@ public class RegistryServiceCache {
 
     /**
      * 读取缓存
-     * 读缓存
      *
      * @return {@link List}<{@link ServiceMetaInfo}>
      */
