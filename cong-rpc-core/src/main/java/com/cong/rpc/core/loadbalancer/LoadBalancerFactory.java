@@ -10,6 +10,9 @@ import com.cong.rpc.core.spi.SpiLoader;
  * @date 2024/03/11
  */
 public class LoadBalancerFactory {
+    private LoadBalancerFactory() {
+        throw new IllegalStateException("Utility class");
+    }
 
     static {
         SpiLoader.load(LoadBalancer.class);
