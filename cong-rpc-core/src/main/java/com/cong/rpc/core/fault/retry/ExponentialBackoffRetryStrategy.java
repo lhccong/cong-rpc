@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class ExponentialBackoffRetryStrategy implements RetryStrategy {
 
     /**
-     * 重试
+     * 重试器
      *
      * @param callable 调用
      * @return {@link RpcResponse}
