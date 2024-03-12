@@ -1,0 +1,21 @@
+package com.cong.rpc.core.fault.retry;
+
+/**
+ * 重试策略键名常量
+ *
+ * @author cong
+ * @date 2024/03/12
+ */
+public interface RetryStrategyKeys {
+
+    /**
+     * 不重试
+     */
+    String NO = "no";
+
+    /**
+     * 固定时间间隔
+     */
+    String FIXED_INTERVAL = "fixedInterval";
+
+}
