@@ -1,0 +1,2 @@
+no=com.cong.rpc.core.fault.retry.NoRetryStrategy
+fixedInterval=com.cong.rpc.core.fault.retry.FixedIntervalRetryStrategy
