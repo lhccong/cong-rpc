@@ -33,7 +33,7 @@ public class RandomDelayRetryStrategy implements RetryStrategy {
                 .withRetryListener(new RetryListener() {
                     @Override
                     public <V> void onRetry(Attempt<V> attempt) {
-                        log.info("重试次数 {}, 距离第一次重试的延迟 {} 毫秒", attempt.getAttemptNumber(), attempt.getDelaySinceFirstAttempt());
+                        log.info("重试次数 {}, 距离第一次重试的延迟 {} 毫秒", attempt.getAttemptNumber()-1, attempt.getDelaySinceFirstAttempt());
                     }
                 })
                 .build();
