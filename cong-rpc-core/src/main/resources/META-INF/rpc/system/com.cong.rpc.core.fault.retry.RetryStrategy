@@ -1,2 +1,4 @@
 no=com.cong.rpc.core.fault.retry.NoRetryStrategy
 fixedInterval=com.cong.rpc.core.fault.retry.FixedIntervalRetryStrategy
+exponentialBackoff=com.cong.rpc.core.fault.retry.ExponentialBackoffRetryStrategy
+randomDelay=com.cong.rpc.core.fault.retry.RandomDelayRetryStrategy
