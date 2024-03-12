@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 指数退避 - 重试策略
  *
- * @author author
+ * @author cong
  * @date 2024/03/12
  */
 @Slf4j
