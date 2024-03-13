@@ -4,6 +4,7 @@ package com.cong.rpc.core.fault.tolerant;
 import com.cong.rpc.core.model.RpcResponse;
 
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 容错策略
@@ -21,5 +22,5 @@ public interface TolerantStrategy {
      * @param e       异常
      * @return {@link RpcResponse}
      */
-    RpcResponse doTolerant(Map<String, Object> context, Exception e);
+    RpcResponse doTolerant(Map<String, Object> context, Exception e) throws ExecutionException, InterruptedException;
 }
