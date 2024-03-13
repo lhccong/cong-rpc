@@ -31,7 +31,7 @@ public class VertxTcpClient {
      * @throws InterruptedException 中断异常
      * @throws ExecutionException
      */
-    public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws InterruptedException, ExecutionException {
+    public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws ExecutionException, InterruptedException {
         // 发送 TCP 请求
         Vertx vertx = Vertx.vertx();
         NetClient netClient = vertx.createNetClient();
@@ -40,7 +40,7 @@ public class VertxTcpClient {
                 result -> {
                     if (!result.succeeded()) {
                         System.err.println("Failed to connect to TCP server");
-                        return;
+                        responseFuture.completeExceptionally(new RuntimeException("Failed to connect to TCP server"));
                     }
                     NetSocket socket = result.result();
                     // 发送数据
@@ -71,7 +71,7 @@ public class VertxTcpClient {
                                     ProtocolMessage<RpcResponse> rpcResponseProtocolMessage =
                                             (ProtocolMessage<RpcResponse>) ProtocolMessageDecoder.decode(buffer);
                                     responseFuture.complete(rpcResponseProtocolMessage.getBody());
-                                } catch (IOException e) {
+                                } catch (Exception e) {
                                     throw new RuntimeException("协议消息解码错误");
                                 }
                             }
@@ -81,6 +81,9 @@ public class VertxTcpClient {
                 });
 
         RpcResponse rpcResponse = responseFuture.get();
+
+
+
         // 记得关闭连接
         netClient.close();
         return rpcResponse;
