@@ -1,0 +1,4 @@
+failBack=com.cong.rpc.core.fault.tolerant.FailBackTolerantStrategy
+failFast=com.cong.rpc.core.fault.tolerant.FailFastTolerantStrategy
+failOver=com.cong.rpc.core.fault.tolerant.FailOverTolerantStrategy
+failSafe=com.cong.rpc.core.fault.tolerant.FailSafeTolerantStrategy
