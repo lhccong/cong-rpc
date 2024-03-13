@@ -59,7 +59,7 @@ public class RpcConfig {
     /**
      * 容错策略
      */
-    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_OVER;
     /**
      * 模拟服务
      */
