@@ -5,7 +5,6 @@ import com.cong.rpc.core.fault.tolerant.MockServiceKeys;
 import com.cong.rpc.core.fault.tolerant.TolerantStrategyKeys;
 import com.cong.rpc.core.loadbalancer.LoadBalancerKeys;
 import com.cong.rpc.core.serializer.SerializerKeys;
-import io.etcd.jetcd.api.User;
 import lombok.Data;
 
 /**
