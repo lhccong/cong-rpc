@@ -1,9 +1,11 @@
 package com.cong.rpc.core.config;
 
 import com.cong.rpc.core.fault.retry.RetryStrategyKeys;
+import com.cong.rpc.core.fault.tolerant.MockServiceKeys;
 import com.cong.rpc.core.fault.tolerant.TolerantStrategyKeys;
 import com.cong.rpc.core.loadbalancer.LoadBalancerKeys;
 import com.cong.rpc.core.serializer.SerializerKeys;
+import io.etcd.jetcd.api.User;
 import lombok.Data;
 
 /**
@@ -59,5 +61,13 @@ public class RpcConfig {
      * 容错策略
      */
     private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
+    /**
+     * 模拟服务
+     */
+    private String mockService = MockServiceKeys.DEFAULT;
+    /**
+     * 模拟数据
+     */
+    private Object mockData = null;
 
 }
