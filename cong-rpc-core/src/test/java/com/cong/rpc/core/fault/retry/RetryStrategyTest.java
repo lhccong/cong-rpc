@@ -10,6 +10,7 @@ public class RetryStrategyTest {
 
     RetryStrategy retryStrategy = new NoRetryStrategy();
     RetryStrategy fixedIntervalRetryStrategy = new FixedIntervalRetryStrategy();
+    RetryStrategy exponentialBackoffRetryStrategy = new ExponentialBackoffRetryStrategy();
 
     @Test
     public void doRetry() {
@@ -23,10 +24,24 @@ public class RetryStrategyTest {
             System.out.println("重试多次失败");
             e.printStackTrace();
         }
-    } @Test
+    }
+    @Test
     public void dofixedIntervalRetry() {
         try {
             RpcResponse rpcResponse = fixedIntervalRetryStrategy.doRetry(() -> {
+                System.out.println("测试重试");
+                throw new RuntimeException("模拟重试失败");
+            });
+            System.out.println(rpcResponse);
+        } catch (Exception e) {
+            System.out.println("重试多次失败");
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void exponentialBackoffRetry() {
+        try {
+            RpcResponse rpcResponse = exponentialBackoffRetryStrategy.doRetry(() -> {
                 System.out.println("测试重试");
                 throw new RuntimeException("模拟重试失败");
             });
