@@ -7,5 +7,5 @@ package com.cong.rpc.core.fault.tolerant;
  * @date 2024/03/13
  */
 public interface MockService {
-    Object mock(Object input);
+    Object mock();
 }

@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DefaultMockService implements MockService {
     @Override
-    public Object mock(Object input) {
-        return input;
+    public Object mock() {
+        return null;
     }
 }

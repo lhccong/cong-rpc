@@ -64,9 +64,6 @@ public class RpcConfig {
      * 模拟服务
      */
     private String mockService = MockServiceKeys.DEFAULT;
-    /**
-     * 模拟数据
-     */
-    private Object mockData = null;
+
 
 }

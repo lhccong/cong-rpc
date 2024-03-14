@@ -22,7 +22,7 @@ public class FailBackTolerantStrategy implements TolerantStrategy {
         // 从注册中心获取服务提供者请求地址
         RpcConfig rpcConfig = RpcApplication.getRpcConfig();
         MockService mockService = MockServiceFactory.getInstance(rpcConfig.getMockService());
-        Object mock = mockService.mock(rpcConfig.getMockData());
+        Object mock = mockService.mock();
         return RpcResponse.builder().data(mock).message("ok").build();
     }
 }
