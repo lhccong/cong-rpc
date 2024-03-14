@@ -3,6 +3,7 @@ package com.cong.example.consumer;
 
 import com.cong.example.model.User;
 import com.cong.example.service.UserService;
+import com.cong.rpc.core.bootstrap.ConsumerBootstrap;
 import com.cong.rpc.core.proxy.ServiceProxyFactory;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 public class EasyConsumerExample {
 
     public static void main(String[] args) {
+        // 服务提供者初始化
+        ConsumerBootstrap.init();
         ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory();
         // 动态代理
         UserService userService = serviceProxyFactory.getProxy(UserService.class);
