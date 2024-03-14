@@ -1,5 +1,6 @@
 package com.crpc.cong.example.springboot.consumer;
 
+import com.crpc.cong.rpc.springboot.starter.annotation.EnableRpc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2024/03/14
  */
 @SpringBootApplication
+@EnableRpc(needServer = false)
 public class ExampleSpringbootConsumerApplication {
 
     public static void main(String[] args) {
